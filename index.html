@@ -9,6 +9,12 @@
 p,body{
 	margin: 0;
 	padding: 0;
+	font-size: 14px;
+}
+#text{
+	margin:20px;
+	line-height: 30px;
+	text-align: center;
 }
 </style>
 <script type="text/javascript">
@@ -25,11 +31,42 @@ var ua = navigator.userAgent;
         } else {
             document.write('<meta name="viewport" content="width=375, user-scalable=no, target-densitydpi=device-dpi">');
  }
+ let str = ['你见，或者不见我，我就在那里，不悲不喜。',
+ '你念，或者不念我，情就在那里，不来不去。',
+ '你爱，或者不爱我，爱就在那里，不增不减。',
+ '你跟，或者不跟我，我的手就在你手里，不舍不弃。',
+ '来我的怀里，或者，让我住进你的心里，',
+ '默然 相爱，',
+ '寂静 欢喜。',"送给正在辛勤工作的 刘益轩  o(∩_∩)o "]
+ let iw = 0;
+ let xw = 0
+ window.onload=function typing(){
+        var text = document.getElementById("text");
+        if(iw == 0){
+        	let div = document.createElement('div');
+        	div.id = 'div'+xw
+        	text.appendChild(div)
+        }
+        let divText=document.getElementById("div"+xw);
+        divText.innerHTML+=str[xw].charAt(iw);
+        iw++;
+        var id=setTimeout(typing,80);
+
+        if(iw==str[xw].length){
+        	if(xw == str.length){
+				clearTimeout(id);
+        	}else{
+        		iw=0;
+        		xw++;
+        	}
+        }
+}
 </script>
 </head>
 <body>
 <p style="text-align: center;">
 <canvas id="c" height="375" width="375"></canvas>
+<div id="text"></div>
 <script>
  var b = document.body;
  var c = document.getElementsByTagName('canvas')[0];
